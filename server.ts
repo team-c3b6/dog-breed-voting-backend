@@ -120,6 +120,15 @@ app.delete("/breeds/:id", async (req, res) => {
   }
 });
 
+// DELETE /breeds
+app.delete("/breeds", async (req, res) => {
+  const queryResult = await client.query("delete from breeds");
+
+  res.status(200).json({
+    status: "success",
+  });
+});
+
 //Start the server on the given port
 const port = process.env.PORT;
 if (!port) {
